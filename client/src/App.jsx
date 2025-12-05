@@ -7,10 +7,11 @@ import Navbar from './components/Navbar';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Login from './pages/Login';
+import axios from 'axios';
 
 
 const App = () => {
-
+  axios.defaults.withCredentials = true;
   return (
     <div className='bg-gradient-to-b from-white to-purple-100 text-black font-[Outfit] w-full h-screen 
     overflow-x-hidden overflow-y-scroll app'>
