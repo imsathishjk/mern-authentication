@@ -12,22 +12,21 @@ const app = express();
 const PORT = process.env.PORT || 8000
 const BACKEND_URL = process.env.BACKEND_URL;
 
-// Connect Database
-await connectDB();
+
 
 
 // Middileware to access token
 
 
-// const allowedOrigins = [process.env.CLIENT_URL,'https://mern-authentication-client-beta.vercel.app'];
+const allowedOrigins = [process.env.CLIENT_URL,'https://mern-authentication-client-beta.vercel.app'];
 
-// const corsOptions = {
-//     origin: allowedOrigins,
-//     credentials: true, // ✅ Important for sending cookies
-// };
+const corsOptions = {
+    origin: allowedOrigins,
+    credentials: true, // ✅ Important for sending cookies
+};
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 
 
 
@@ -38,7 +37,8 @@ app.use(cookieParser());
 app.listen(PORT, () => {
     console.log(`Server running on ${BACKEND_URL}${PORT}...`)
 });
-
+// Connect Database
+await connectDB();
 
 app.get('/', (req, res) => {
     res.send('API Working..')
