@@ -19,7 +19,7 @@ await connectDB();
 // Middileware to access token
 
 
-const allowedOrigins = process.env.CLIENT_URL;
+const allowedOrigins = [process.env.CLIENT_URL,'https://mern-authentication-client-beta.vercel.app'];
 
 const corsOptions = {
     origin: allowedOrigins,
