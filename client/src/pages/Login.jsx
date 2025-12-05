@@ -33,6 +33,7 @@ const Login = () => {
                 } else {
                     toast.error(data.message)
                     setLoading(false)
+                    console.log(data);
                 }
             } else {
                 setLoading(true)
@@ -47,6 +48,7 @@ const Login = () => {
                 } else {
                     toast.error(data.message)
                     setLoading(false)
+                    console.log(data)
                 }
             }
         } catch (error) {
