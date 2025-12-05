@@ -19,10 +19,7 @@ await connectDB();
 // Middileware to access token
 
 
-const allowedOrigins = [
-    'http://localhost:5173'// ✅ Your Vercel frontend URL
-    // 
-];
+const allowedOrigins = process.env.CLIENT_URL;
 
 const corsOptions = {
     origin: allowedOrigins,
