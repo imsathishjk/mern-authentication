@@ -19,15 +19,15 @@ await connectDB();
 // Middileware to access token
 
 
-const allowedOrigins = [process.env.CLIENT_URL,'https://mern-authentication-client-beta.vercel.app'];
+// const allowedOrigins = [process.env.CLIENT_URL,'https://mern-authentication-client-beta.vercel.app'];
 
-const corsOptions = {
-    origin: allowedOrigins,
-    credentials: true, // ✅ Important for sending cookies
-};
+// const corsOptions = {
+//     origin: allowedOrigins,
+//     credentials: true, // ✅ Important for sending cookies
+// };
 
 app.use(express.json());
-app.use(cors(corsOptions));
+app.use(cors());
 
 
 
