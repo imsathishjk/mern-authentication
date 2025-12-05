@@ -25,6 +25,7 @@ export const AppContextProvider = ({ children }) => {
             const { data } = await axios.get(backendUrl + '/api/auth/is-auth', { withCredentials: true });
             if (data.success) {
                 setLoggedIn(true);
+                navigate('/');
                 getUserData()
             }
 

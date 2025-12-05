@@ -29,6 +29,7 @@ const ResetPassword = () => {
             } else {
                 toast(response.data.message)
                 setLoading(false)
+                console.log(response)
             }
         } catch (error) {
             toast.error(error.message)

@@ -9,7 +9,7 @@ import cors from 'cors'
 // Initiating express App
 const app = express();
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 8000
 const BACKEND_URL = process.env.BACKEND_URL;
 
 // Connect Database

@@ -2,8 +2,10 @@ import { transporter } from "../config/transporter.js";
 import userModal from "../models/userModal.js";
 import bcrypt from 'bcryptjs';
 
-export const sendVerifyOtp = async (req, res) => {
 
+
+
+export const sendVerifyOtp = async (req, res) => {
     try {
         const userId = req.userId;
         const user = await userModal.findById(userId)
@@ -25,7 +27,7 @@ export const sendVerifyOtp = async (req, res) => {
             subject: "Account Verify OTP", // Subject line
             text: `Please use this OTP ${otp} to verify your account`, // plain text body
         }
-        transporter.sendMail(mailOptions)
+        await transporter.sendMail(mailOptions)
 
         return res.json({ success: true, message: 'OTP Sent to your registered email', otp })
 
@@ -85,7 +87,7 @@ export const resetPasswordOtp = async (req, res) => {
             subject: "Password Reset OTP", // Subject line
             text: `Please use this OTP ${otp} to reset your password`, // plain text body
         }
-        transporter.sendMail(mailOptions)
+        await transporter.sendMail(mailOptions)
 
         return res.json({ success: true, message: 'OTP Sent to your registered email', otp })
     } catch (error) {

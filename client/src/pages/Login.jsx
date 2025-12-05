@@ -1,9 +1,10 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import AppContext from '../context/AppContext';
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import Loader from './Loader';
+import Loader from '../components/Loader';
+
 
 
 const Login = () => {
@@ -51,12 +52,12 @@ const Login = () => {
         } catch (error) {
             toast.error(error.message)
         }
-    }
+    };
 
     return (
         <>
-            {loading ? <Loader /> : <div className='w-full h-screen backdrop-blur-xl  flex items-center justify-center fixed'>
-                <form onSubmit={userHandle} className='sm:min-w-sm relative bg-gradient-to-b from-slate-800 to-slate-900 text-white p-8 rounded-md flex flex-col'>
+            {loading ? <Loader /> : <div className='h-screen flex justify-center items-center max-w-lg m-auto'>
+                <form onSubmit={userHandle} className='relative bg-gradient-to-b from-slate-800 to-slate-900 text-white p-6 md:p-8 rounded-md flex flex-col w-[95%] mx-auto'>
                     <h1 className='text-2xl font-medium text-center mt-5'>{currState}</h1>
                     {currState === 'Sign Up' ?
 
@@ -77,7 +78,7 @@ const Login = () => {
                     <p className='text-sm md:text-lg text-purple-300 my-3'>Password</p>
 
                     <div className='flex justify-between gap-2 items-center border-2 border-purple-300 rounded-md py-2 px-3'>
-                        <input className='outline-none  placeholder:text-sm flex-1'
+                        <input className='outline-none placeholder:text-sm'
                             onChange={(e) => setPassword(e.target.value)} value={password} type={showPassword ? 'text' : 'password'} placeholder='john@1234' required />
 
                         {showPassword ? <i className="fa-solid fa-eye-slash text-sm cursor-pointer" onClick={() => setShowPassword(false)}></i> : <i onClick={() => setShowPassword(true)} className="fa-solid fa-eye text-sm cursor-pointer"></i>}

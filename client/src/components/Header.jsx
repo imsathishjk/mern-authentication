@@ -4,7 +4,7 @@ import AppContext from '../context/AppContext';
 const Header = () => {
     const { user, loggedIn } = useContext(AppContext);
     return (
-        <div className='mt-12 p-4 px-4 sm:px-8 md:px-12 w-full mb-12'>
+        <div className='mt-6 md:mt-12 p-4 px-4 sm:px-8 md:px-12 w-full mb-12'>
             <div className='flex flex-col md:flex-row items-center gap-12'>
                 <div className='flex flex-col items-start gap-5'>
                     <h1 className='font-medium text-xl md:text-3xl '>Hey, <span className='text-transparent bg-clip-text bg-gradient-to-br from-purple-500 to-purple-900'>{user && loggedIn ? user.username : "Buddy"}</span></h1>

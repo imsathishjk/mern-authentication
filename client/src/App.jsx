@@ -3,10 +3,10 @@ import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home';
 import VerifyEmail from './pages/verifyEmail'
 import ResetPassword from './pages/resetPassword';
-import Login from './components/Login';
 import Navbar from './components/Navbar';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Login from './pages/Login';
 
 
 const App = () => {
@@ -14,7 +14,6 @@ const App = () => {
   return (
     <div className='bg-gradient-to-b from-white to-purple-100 text-black font-[Outfit] w-full h-screen 
     overflow-x-hidden overflow-y-scroll app'>
-
       <Navbar />
       <ToastContainer />
       <Routes>

@@ -25,6 +25,7 @@ const verifyEmail = () => {
       } else {
         toast.error(data.message)
         setLoading(false);
+        console.log(data.message)
       }
     } catch (error) {
       toast.error(error.message)
