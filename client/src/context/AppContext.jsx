@@ -21,6 +21,7 @@ export const AppContextProvider = ({ children }) => {
     const location = useLocation();
 
     const getAuthState = async () => {
+        axios.defaults.withCredentials = true;
         try {
             const { data } = await axios.get(backendUrl + '/api/auth/is-auth', { withCredentials: true });
             if (data.success) {
@@ -37,6 +38,7 @@ export const AppContextProvider = ({ children }) => {
 
 
     const getUserData = async () => {
+        axios.defaults.withCredentials = true;
         try {
             const { data } = await axios.get(backendUrl + '/api/auth/data', { withCredentials: true });
             if (data.success) {
