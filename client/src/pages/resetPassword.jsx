@@ -18,6 +18,8 @@ const ResetPassword = () => {
 
     // Send OTP for resetting password
     const resetPassOtp = async (e) => {
+        axios.defaults.withCredentials = true;
+
         e.preventDefault();
         try {
             setLoading(true)

@@ -38,6 +38,7 @@ const verifyEmail = () => {
 
 
   const sendVerifyOtp = async () => {
+    axios.defaults.withCredentials = true;
 
     try {
       const { data } = await axios.post(backendUrl + '/api/user/send-verify-otp', { withCredentials: true })

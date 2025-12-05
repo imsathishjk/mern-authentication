@@ -19,6 +19,7 @@ const Login = () => {
     const navigate = useNavigate();
 
     const userHandle = async (e) => {
+        axios.defaults.withCredentials = true;
         try {
             e.preventDefault();
             if (currState === 'Sign Up') {
