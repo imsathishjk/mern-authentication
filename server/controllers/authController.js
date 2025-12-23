@@ -21,8 +21,8 @@ export const userRegsiter = async (req, res) => {
         const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_TEXT, { expiresIn: '7d' });
         res.cookie('token', token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
+            secure: true,
+            sameSite: 'none',
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
         return res.json({ success: true, message: 'User Registered Successfully' })
@@ -51,12 +51,12 @@ export const userLogin = async (req, res) => {
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_TEXT, { expiresIn: '7d' });
         res.cookie('token', token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
+            secure: true,
+            sameSite: 'none',
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
 
-      
+
 
         if (isPassMatch) {
             return res.json({ success: true, message: 'Login Successful' })
@@ -74,10 +74,10 @@ export const userLogin = async (req, res) => {
 
 export const LogOut = async (req, res) => {
     try {
-        res.clearCookie('token',{
+        res.clearCookie('token', {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
+            secure: true,
+            sameSite: 'none',
         })
         res.json({ success: true, message: "Logged Out" })
     } catch (error) {
@@ -88,7 +88,7 @@ export const LogOut = async (req, res) => {
 // Get User Data;
 
 export const userData = async (req, res) => {
-    const userId  = req.userId;
+    const userId = req.userId;
     try {
         const userData = await userModal.findById(userId);
         if (!userId) {
