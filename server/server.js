@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { urlencoded } from 'express';
 import dotenv from 'dotenv/config';
 import authRouter from './routes/authRoute.js';
 import { connectDB } from './config/db.js';
@@ -18,7 +18,7 @@ const BACKEND_URL = process.env.BACKEND_URL;
 // Middileware to access token
 
 
-const allowedOrigins = [process.env.CLIENT_URL,'https://mern-authentication-client-beta.vercel.app'];
+const allowedOrigins = [process.env.CLIENT_URL, 'https://mern-authentication-client-beta.vercel.app'];
 
 const corsOptions = {
     origin: allowedOrigins,
@@ -26,6 +26,7 @@ const corsOptions = {
 };
 
 app.use(express.json());
+app.use(urlencoded({ extended: true }))
 app.use(cors(corsOptions));
 
 
@@ -34,9 +35,9 @@ app.use(cors(corsOptions));
 app.use(cookieParser());
 
 
-app.listen(PORT, () => {
-    console.log(`Server running on ${BACKEND_URL}${PORT}...`)
-});
+// app.listen(PORT, () => {
+//     console.log(`Server running on ${BACKEND_URL}${PORT}...`)
+// });
 // Connect Database
 await connectDB();
 
@@ -45,3 +46,6 @@ app.get('/', (req, res) => {
 });
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
+
+
+export default app;
